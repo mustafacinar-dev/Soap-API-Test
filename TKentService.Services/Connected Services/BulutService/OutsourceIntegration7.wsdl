@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetTransactions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransactionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTransactionsResult" type="tns:ListResultOfTransaction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ListResultOfTransaction">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="List" type="tns:ArrayOfTransaction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTransaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Transaction" nillable="true" type="tns:Transaction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Transaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberAccountCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberAccountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RenterTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RenterEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RenterPIDOrTaxID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContraAccount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TaxRate" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecordDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListResultOfTransaction" nillable="true" type="tns:ListResultOfTransaction" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTransactionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTransactions" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTransactionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionsHttpGetIn">
+    <wsdl:part name="Key" type="s:string" />
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ListResultOfTransaction" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionsHttpPostIn">
+    <wsdl:part name="Key" type="s:string" />
+    <wsdl:part name="Date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ListResultOfTransaction" />
+  </wsdl:message>
+  <wsdl:portType name="OutsourceIntegration7Soap">
+    <wsdl:operation name="GetTransactions">
+      <wsdl:input message="tns:GetTransactionsSoapIn" />
+      <wsdl:output message="tns:GetTransactionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="OutsourceIntegration7HttpGet">
+    <wsdl:operation name="GetTransactions">
+      <wsdl:input message="tns:GetTransactionsHttpGetIn" />
+      <wsdl:output message="tns:GetTransactionsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="OutsourceIntegration7HttpPost">
+    <wsdl:operation name="GetTransactions">
+      <wsdl:input message="tns:GetTransactionsHttpPostIn" />
+      <wsdl:output message="tns:GetTransactionsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OutsourceIntegration7Soap" type="tns:OutsourceIntegration7Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTransactions">
+      <soap:operation soapAction="http://tempuri.org/GetTransactions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OutsourceIntegration7Soap12" type="tns:OutsourceIntegration7Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTransactions">
+      <soap12:operation soapAction="http://tempuri.org/GetTransactions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OutsourceIntegration7HttpGet" type="tns:OutsourceIntegration7HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetTransactions">
+      <http:operation location="/GetTransactions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OutsourceIntegration7HttpPost" type="tns:OutsourceIntegration7HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetTransactions">
+      <http:operation location="/GetTransactions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OutsourceIntegration7">
+    <wsdl:port name="OutsourceIntegration7Soap" binding="tns:OutsourceIntegration7Soap">
+      <soap:address location="https://yonetim.bulutyonetim.com/Services/OutsourceIntegration7.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OutsourceIntegration7Soap12" binding="tns:OutsourceIntegration7Soap12">
+      <soap12:address location="https://yonetim.bulutyonetim.com/Services/OutsourceIntegration7.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OutsourceIntegration7HttpGet" binding="tns:OutsourceIntegration7HttpGet">
+      <http:address location="https://yonetim.bulutyonetim.com/Services/OutsourceIntegration7.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OutsourceIntegration7HttpPost" binding="tns:OutsourceIntegration7HttpPost">
+      <http:address location="https://yonetim.bulutyonetim.com/Services/OutsourceIntegration7.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

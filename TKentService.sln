@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKentService.Forms", "TKentService.Forms\TKentService.Forms.csproj", "{BCE3E746-AA25-428B-B786-FADF71E401A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKentService.Services", "TKentService.Services\TKentService.Services.csproj", "{8E7F80A2-1D30-4FFF-AEFD-88F44D2591B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCE3E746-AA25-428B-B786-FADF71E401A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE3E746-AA25-428B-B786-FADF71E401A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE3E746-AA25-428B-B786-FADF71E401A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE3E746-AA25-428B-B786-FADF71E401A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E7F80A2-1D30-4FFF-AEFD-88F44D2591B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E7F80A2-1D30-4FFF-AEFD-88F44D2591B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E7F80A2-1D30-4FFF-AEFD-88F44D2591B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E7F80A2-1D30-4FFF-AEFD-88F44D2591B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34A61DDE-3778-47BC-9A02-B187D31FE684}
+	EndGlobalSection
+EndGlobal
